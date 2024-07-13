@@ -8,7 +8,7 @@ const aboutEffect: Variants = {
     },
     onscreen: {
         y: 0,
-        transition: { type: "spring", bounce: 0.4, duration: 1.5 },
+        transition: { type: "spring", bounce: 0.2, duration: 1 },
     },
 };
 
@@ -21,7 +21,7 @@ function About() {
                 viewport={{ once: true }}
                 variants={aboutEffect}
             >
-                <p className="text-black text-xl xl:text-4xl font-bold">
+                <p className="text-black text-md md:text-xl xl:text-4xl font-bold">
                     {about}
                 </p>
             </motion.div>

@@ -15,6 +15,7 @@ const onScreenEffect: Variants = {
 };
 
 const Card = ({ name, role, img }: any, key: number) => {
+    const [hasAnimated, setHasAnimated] = React.useState(false);
     return (
         <motion.div
             className="my-2"
@@ -23,8 +24,9 @@ const Card = ({ name, role, img }: any, key: number) => {
             initial="offscreen"
             whileInView="onscreen"
             viewport={{ once: true }}
+            onAnimationComplete={() => setHasAnimated(true)}
         >
-            <div className="drop-shadow-xl">
+            <motion.div className="drop-shadow-xl">
                 <div>
                     <div className="relative xl:h-[60px] h-[2px] w-[200px] drop-shadow-xl">
                         <img
@@ -41,7 +43,7 @@ const Card = ({ name, role, img }: any, key: number) => {
                         <p className="text-[#4E4E4E]">{role}</p>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </motion.div>
     );
 };
@@ -106,7 +108,7 @@ function Class() {
                 viewport={{ once: true }}
                 className="text-3xl xl:text-4xl font-black mt-12"
             >
-                Homeroom
+                HOMEROOM
             </motion.h1>
             <section className="flex flex-col justify-center items-center">
                 <HomeroomSection homeroom={homeroom} />
@@ -118,7 +120,7 @@ function Class() {
                 viewport={{ once: true }}
                 className="text-3xl xl:text-4xl  font-black "
             >
-                Leader & Vice
+                LEADER & VICE
             </motion.h1>
             <section className="flex flex-col justify-center items-center">
                 <LeadViceSection leadVice={leadVice} />
@@ -130,7 +132,7 @@ function Class() {
                 viewport={{ once: true }}
                 className="text-3xl xl:text-4xl  font-black "
             >
-                Students
+                STUDENTS
             </motion.h1>
             <section className="flex flex-col justify-center items-center">
                 <StudentsSection students={students} />

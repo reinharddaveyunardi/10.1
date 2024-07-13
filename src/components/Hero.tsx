@@ -1,9 +1,10 @@
 import React from "react";
-import { motion, Variant } from "framer-motion";
+import { motion } from "framer-motion";
 import { title, desc } from "@/data/data";
 import { IoLogoInstagram } from "react-icons/io";
 import { FaSpotify } from "react-icons/fa";
 import "@/app/globals.css";
+import Clock from "./Clock";
 
 const Title = ({ title }: any) => {
     return (
@@ -14,9 +15,7 @@ const Title = ({ title }: any) => {
                 animate={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 1.5, bounce: 0.5, type: "spring" }}
             >
-                <h1 className="text-[clamp(10rem,15vw,15rem)] font-black">
-                    {title}
-                </h1>
+                <h1 className="text-[8rem] font-black">{title}</h1>
             </motion.div>
         </>
     );
@@ -63,6 +62,7 @@ const Links = () => {
                     }}
                     href="https://google.com"
                     target="_blank"
+                    aria-label="Instagram"
                     rel="noopener noreferrer"
                 >
                     <IoLogoInstagram className="text-3xl rounded-md bg-gradient-to-br from-pink-600 to-purple-600" />
@@ -80,6 +80,7 @@ const Links = () => {
                     }}
                     href="https://google.com"
                     target="_blank"
+                    aria-label="Spotify"
                     rel="noopener noreferrer"
                 >
                     <FaSpotify className="text-3xl text-green-500" />
@@ -92,6 +93,7 @@ const Links = () => {
 function Hero() {
     return (
         <div className="h-screen w-full justify-center items-center flex flex-col">
+            <Clock />
             <Title title={title} />
             <Desc desc={desc} />
             <Links />
