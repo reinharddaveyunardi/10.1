@@ -7,6 +7,19 @@ import Hero from "@/components/Hero";
 import Lenis from "lenis";
 import { useEffect } from "react";
 import "@/app/globals.css";
+import { motion, Variants } from "framer-motion";
+
+const onScreenEffectFade: Variants = {
+    offScreen: {
+        y: 100,
+        opacity: 0,
+    },
+    onScreen: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.5 },
+    },
+};
 
 export default function Home() {
     useEffect(() => {
@@ -22,7 +35,14 @@ export default function Home() {
             <Hero />
             <About />
             <Class />
-            <SmoothScroll />
+            {/* <motion.div
+                variants={onScreenEffectFade}
+                initial="offScreen"
+                whileInView="onScreen"
+                viewport={{ once: true }}
+            >
+                <SmoothScroll />
+            </motion.div> */}
             <Footer />
         </div>
     );

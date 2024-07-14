@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { homeroom, leadVice, students } from "@/data/data";
 import { motion, Variants } from "framer-motion";
 
@@ -15,7 +15,7 @@ const onScreenEffect: Variants = {
 };
 
 const Card = ({ name, role, img }: any, key: number) => {
-    const [hasAnimated, setHasAnimated] = React.useState(false);
+    const [selectedProfile, setSelectedProfile] = useState(null);
     return (
         <motion.div
             className="my-2"
@@ -24,7 +24,6 @@ const Card = ({ name, role, img }: any, key: number) => {
             initial="offscreen"
             whileInView="onscreen"
             viewport={{ once: true }}
-            onAnimationComplete={() => setHasAnimated(true)}
         >
             <motion.div className="drop-shadow-xl">
                 <div>
@@ -35,7 +34,7 @@ const Card = ({ name, role, img }: any, key: number) => {
                             alt={name}
                         />
                     </div>
-                    <div className="flex flex-col bg-white rounded-md xl:w-[470px] w-[360px] h-[90px] xl:pl-[35%] pl-[35%] pr-[10%] ml-[20px] mt-[60px] justify-center">
+                    <div className="flex flex-col bg-white rounded-md xl:w-[470px] w-[360px] h-[90px] xl:pl-[35%] pl-[30%] pr-[10%] ml-[20px] mt-[60px] justify-center">
                         <h1 className="font-bold italic text-[#4E4E4E]">
                             {name}
                         </h1>
@@ -100,44 +99,55 @@ const StudentsSection = ({ students }: any) => {
 
 function Class() {
     return (
-        <div className="h-full w-full flex flex-col xl:gap-16 my-16 gap-12 justify-center items-center">
-            <motion.h1
-                variants={onScreenEffect}
-                initial="offscreen"
-                whileInView="onscreen"
-                viewport={{ once: true }}
-                className="text-3xl xl:text-4xl font-black mt-12"
-            >
-                HOMEROOM
-            </motion.h1>
-            <section className="flex flex-col justify-center items-center">
-                <HomeroomSection homeroom={homeroom} />
-            </section>
-            <motion.h1
-                variants={onScreenEffect}
-                initial="offscreen"
-                whileInView="onscreen"
-                viewport={{ once: true }}
-                className="text-3xl xl:text-4xl  font-black "
-            >
-                LEADER & VICE
-            </motion.h1>
-            <section className="flex flex-col justify-center items-center">
-                <LeadViceSection leadVice={leadVice} />
-            </section>
-            <motion.h1
-                variants={onScreenEffect}
-                initial="offscreen"
-                whileInView="onscreen"
-                viewport={{ once: true }}
-                className="text-3xl xl:text-4xl  font-black "
-            >
-                STUDENTS
-            </motion.h1>
-            <section className="flex flex-col justify-center items-center">
-                <StudentsSection students={students} />
-            </section>
-        </div>
+        <>
+            <div className="h-full w-full flex flex-col xl:gap-16 my-16 gap-12 justify-center items-center">
+                <motion.h1
+                    variants={onScreenEffect}
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    viewport={{ once: true }}
+                    className="text-3xl xl:text-4xl font-black mt-12"
+                >
+                    HOMEROOM
+                </motion.h1>
+                <section className="flex flex-col justify-center items-center">
+                    <HomeroomSection homeroom={homeroom} />
+                </section>
+                <motion.h1
+                    variants={onScreenEffect}
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    viewport={{ once: true }}
+                    className="text-3xl xl:text-4xl  font-black "
+                >
+                    LEADER & VICE
+                </motion.h1>
+                <section className="flex flex-col justify-center items-center">
+                    <LeadViceSection leadVice={leadVice} />
+                </section>
+                <motion.h1
+                    variants={onScreenEffect}
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    viewport={{ once: true }}
+                    className="text-3xl xl:text-4xl  font-black "
+                >
+                    STUDENTS
+                </motion.h1>
+                <section className="flex flex-col justify-center items-center">
+                    <StudentsSection students={students} />
+                </section>
+                {/* <motion.h1
+                    variants={onScreenEffect}
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    viewport={{ once: true }}
+                    className="text-3xl xl:text-4xl  font-black "
+                >
+                    STUDENTS ORIENTATION
+                </motion.h1> */}
+            </div>
+        </>
     );
 }
 

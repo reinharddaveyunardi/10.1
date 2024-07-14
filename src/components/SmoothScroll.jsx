@@ -45,7 +45,6 @@ const SmoothScroll = () => {
     const { scrollYProgress } = useViewportScroll();
 
     const [containerRef, percentage] = useScrollPercentage({
-        /* Optional options */
         threshold: 0.1,
     });
 
@@ -62,7 +61,7 @@ const SmoothScroll = () => {
     const spring = useSpring(transform, physics);
 
     return (
-        <div ref={containerRef}>
+        <motion.div ref={containerRef}>
             <div className="scroll-container">
                 <motion.section
                     ref={scrollRef}
@@ -84,7 +83,7 @@ const SmoothScroll = () => {
                 style={{ height: scrollRange }}
                 className="ghost"
             />
-        </div>
+        </motion.div>
     );
 };
 
