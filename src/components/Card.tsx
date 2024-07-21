@@ -1,4 +1,4 @@
-import { onScreenEffect } from "@/animations/Variants.";
+import { onScreenEffect } from "@/animations/Variants";
 import { CardProps } from "@/interface";
 import { motion } from "framer-motion";
 import React from "react";

@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { homeroom, leadVice, students } from "@/data/data";
 import { motion } from "framer-motion";
-import { onScreenEffect } from "../animations/Variants";
+import { onScreenEffect } from "@/animations/Variants";
 import { CardProps } from "@/interface";
 
 const Card = memo(({ name, role, img }: CardProps) => {
