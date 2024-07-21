@@ -9,33 +9,94 @@ import Clock from "./Clock";
 const Title = ({ title }: any) => {
     return (
         <>
-            <motion.div
-                className="title "
-                initial={{ opacity: 0, translateY: -150 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 1.5, bounce: 0.5, type: "spring" }}
-            >
-                <h1 className="text-[8rem] font-black">{title}</h1>
-            </motion.div>
+            <div className="flex">
+                <motion.div
+                    className="title"
+                    initial={{ opacity: 0, translateY: -150 }}
+                    animate={{ opacity: 1, translateY: 0 }}
+                    transition={{ duration: 1.5, bounce: 0.5, type: "spring" }}
+                >
+                    <h1 className="text-[8rem] font-black">1</h1>
+                </motion.div>
+                <motion.div
+                    className="title"
+                    initial={{ opacity: 0, translateY: -150 }}
+                    animate={{ opacity: 1, translateY: 0 }}
+                    transition={{
+                        duration: 1.5,
+                        bounce: 0.5,
+                        type: "spring",
+                        delay: 0.2,
+                    }}
+                >
+                    <h1 className="text-[8rem] font-black">0</h1>
+                </motion.div>
+                <motion.div
+                    className="title"
+                    initial={{ opacity: 0, translateY: -150 }}
+                    animate={{ opacity: 1, translateY: 0 }}
+                    transition={{
+                        duration: 1.5,
+                        bounce: 0.5,
+                        type: "spring",
+                        delay: 0.3,
+                    }}
+                >
+                    <h1 className="text-[8rem] font-black">.</h1>
+                </motion.div>
+                <motion.div
+                    className="title"
+                    initial={{ opacity: 0, translateY: -150 }}
+                    animate={{ opacity: 1, translateY: 0 }}
+                    transition={{
+                        duration: 1.5,
+                        bounce: 0.5,
+                        type: "spring",
+                        delay: 0.4,
+                    }}
+                >
+                    <h1 className="text-[8rem] font-black">1</h1>
+                </motion.div>
+            </div>
         </>
     );
 };
 const Desc = ({ desc }: any) => {
     return (
         <>
-            <div>
+            <div className="flex">
                 <motion.p
                     className="text-3xl font-black"
-                    initial={{ opacity: 0, translateY: 150 }}
-                    animate={{ opacity: 1, translateY: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{
                         duration: 1.5,
-                        delay: 0.15,
-                        type: "spring",
-                        bounce: 0.5,
+                        delay: 1.5,
                     }}
                 >
-                    {desc}
+                    2024
+                </motion.p>
+                <motion.p
+                    className="text-3xl font-black"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                        duration: 1.5,
+                        delay: 1.6,
+                    }}
+                >
+                    /
+                </motion.p>
+                <motion.p
+                    className="text-3xl font-black"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                        duration: 1.5,
+                        delay: 1.7,
+                    }}
+                >
+                    2025
                 </motion.p>
             </div>
         </>
@@ -60,14 +121,14 @@ const Links = () => {
                         damping: 24,
                         stiffness: 300,
                     }}
-                    href="https://google.com"
+                    href="https://www.instagram.com/x.onecb/"
                     target="_blank"
                     aria-label="Instagram"
                     rel="noopener noreferrer"
                 >
                     <IoLogoInstagram className="text-3xl rounded-md bg-gradient-to-br from-pink-600 to-purple-600" />
                 </motion.a>
-                <motion.a
+                {/* <motion.a
                     initial={{ opacity: 0, translateY: 150 }}
                     animate={{ opacity: 1, translateY: 0 }}
                     transition={{
@@ -84,7 +145,7 @@ const Links = () => {
                     rel="noopener noreferrer"
                 >
                     <FaSpotify className="text-3xl text-green-500" />
-                </motion.a>
+                </motion.a> */}
             </motion.div>
         </>
     );

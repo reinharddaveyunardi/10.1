@@ -1,25 +1,13 @@
-import React, { useState } from "react";
+import React, { memo } from "react";
 import { homeroom, leadVice, students } from "@/data/data";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import { onScreenEffect } from "@/animations/Variants";
+import { CardProps } from "@/interface";
 
-const onScreenEffect: Variants = {
-    offscreen: {
-        y: 300,
-        opacity: 0,
-    },
-    onscreen: {
-        y: 0,
-        opacity: 1,
-        transition: { type: "spring", bounce: 0.1, duration: 1.5 },
-    },
-};
-
-const Card = ({ name, role, img }: any, key: number) => {
-    const [selectedProfile, setSelectedProfile] = useState(null);
+const Card = memo(({ name, role, img }: CardProps) => {
     return (
         <motion.div
             className="my-2"
-            key={key}
             variants={onScreenEffect}
             initial="offscreen"
             whileInView="onscreen"
@@ -27,7 +15,7 @@ const Card = ({ name, role, img }: any, key: number) => {
         >
             <motion.div className="drop-shadow-xl">
                 <div>
-                    <div className="relative xl:h-[60px] h-[2px] w-[200px] drop-shadow-xl">
+                    <div className="relative xl:h-[60px] h-[2px] w-[200px] p-2 drop-shadow-xl">
                         <img
                             className="xl:w-[180px] md:w-[150px] w-[120px] absolute rounded-md drop-shadow-xl"
                             src={img}
@@ -45,110 +33,104 @@ const Card = ({ name, role, img }: any, key: number) => {
             </motion.div>
         </motion.div>
     );
-};
+});
 
-const HomeroomSection = ({ homeroom }: any) => {
-    return (
-        <>
-            <div>
-                {homeroom.map((item: any, key: number) => (
-                    <Card
-                        name={item.name}
-                        role={item.role}
-                        img={item.img}
-                        key={key}
-                    />
-                ))}
-            </div>
-        </>
-    );
-};
-const LeadViceSection = ({ leadVice }: any) => {
-    return (
-        <>
-            <div className="flex flex-col xl:flex xl:flex-row xl:gap-24 gap-6">
-                {leadVice.map((item: any, key: number) => (
-                    <Card
-                        name={item.name}
-                        role={item.role}
-                        img={item.img}
-                        key={key}
-                    />
-                ))}
-            </div>
-        </>
-    );
-};
+Card.displayName = "Card";
 
-const StudentsSection = ({ students }: any) => {
+const HomeroomSection = memo(({ homeroom }: { homeroom: any[] }) => {
     return (
-        <>
-            <div className="flex flex-col xl:grid xl:grid-cols-3 xl:gap-24 gap-6">
-                {students.map((item: any, key: number) => (
-                    <Card
-                        name={item.name}
-                        role={item.role}
-                        img={item.img}
-                        key={key}
-                    />
-                ))}
-            </div>
-        </>
+        <div>
+            {homeroom.map((item, key) => (
+                <Card
+                    name={item.name}
+                    role={item.role}
+                    img={item.img}
+                    key={key}
+                />
+            ))}
+        </div>
     );
-};
+});
+
+HomeroomSection.displayName = "HomeroomSection";
+
+const LeadViceSection = memo(({ leadVice }: { leadVice: any[] }) => {
+    return (
+        <div className="flex flex-col xl:flex xl:flex-row xl:gap-24 gap-6">
+            {leadVice.map((item, key) => (
+                <Card
+                    name={item.name}
+                    role={item.role}
+                    img={item.img}
+                    key={key}
+                />
+            ))}
+        </div>
+    );
+});
+
+LeadViceSection.displayName = "LeadViceSection";
+
+const StudentsSection = memo(({ students }: { students: any[] }) => {
+    return (
+        <div className="flex flex-col xl:grid xl:grid-cols-3 xl:gap-24 gap-6">
+            {students.map((item, key) => (
+                <Card
+                    name={item.name}
+                    role={item.role}
+                    img={item.img}
+                    key={key}
+                />
+            ))}
+        </div>
+    );
+});
+
+StudentsSection.displayName = "StudentsSection";
 
 function Class() {
     return (
-        <>
-            <div className="h-full w-full flex flex-col xl:gap-16 my-16 gap-12 justify-center items-center">
-                <motion.h1
-                    variants={onScreenEffect}
-                    initial="offscreen"
-                    whileInView="onscreen"
-                    viewport={{ once: true }}
-                    className="text-3xl xl:text-4xl font-black mt-12"
-                >
-                    HOMEROOM
-                </motion.h1>
-                <section className="flex flex-col justify-center items-center">
-                    <HomeroomSection homeroom={homeroom} />
-                </section>
-                <motion.h1
-                    variants={onScreenEffect}
-                    initial="offscreen"
-                    whileInView="onscreen"
-                    viewport={{ once: true }}
-                    className="text-3xl xl:text-4xl  font-black "
-                >
-                    LEADER & VICE
-                </motion.h1>
-                <section className="flex flex-col justify-center items-center">
-                    <LeadViceSection leadVice={leadVice} />
-                </section>
-                <motion.h1
-                    variants={onScreenEffect}
-                    initial="offscreen"
-                    whileInView="onscreen"
-                    viewport={{ once: true }}
-                    className="text-3xl xl:text-4xl  font-black "
-                >
-                    STUDENTS
-                </motion.h1>
-                <section className="flex flex-col justify-center items-center">
-                    <StudentsSection students={students} />
-                </section>
-                {/* <motion.h1
-                    variants={onScreenEffect}
-                    initial="offscreen"
-                    whileInView="onscreen"
-                    viewport={{ once: true }}
-                    className="text-3xl xl:text-4xl  font-black "
-                >
-                    STUDENTS ORIENTATION
-                </motion.h1> */}
-            </div>
-        </>
+        <div className="h-full w-full flex flex-col xl:gap-16 my-16 gap-12 justify-center items-center">
+            <motion.h1
+                variants={onScreenEffect}
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true }}
+                className="text-3xl xl:text-4xl font-black mt-12"
+            >
+                HOMEROOM
+            </motion.h1>
+            <section className="flex flex-col justify-center items-center">
+                <HomeroomSection homeroom={homeroom} />
+            </section>
+            <motion.h1
+                variants={onScreenEffect}
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true }}
+                className="text-3xl xl:text-4xl  font-black "
+            >
+                LEADER & VICE
+            </motion.h1>
+            <section className="flex flex-col justify-center items-center">
+                <LeadViceSection leadVice={leadVice} />
+            </section>
+            <motion.h1
+                variants={onScreenEffect}
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true }}
+                className="text-3xl xl:text-4xl  font-black "
+            >
+                STUDENTS
+            </motion.h1>
+            <section className="flex flex-col justify-center items-center">
+                <StudentsSection students={students} />
+            </section>
+        </div>
     );
 }
+
+Class.displayName = "Class";
 
 export default Class;
