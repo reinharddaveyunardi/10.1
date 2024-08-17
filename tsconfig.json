@@ -27,7 +27,7 @@
         "**/*.tsx",
         ".next/types/**/*.ts",
         "src/components/HorizontalScroll.jsx",
-        "src/components/SmoothScroll.jsx"
+        "src/components/HorizontalScroll.jsx"
     ],
     "exclude": ["node_modules"]
 }

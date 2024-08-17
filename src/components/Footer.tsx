@@ -36,18 +36,10 @@ function Footer() {
                             <ul className="text-gray-500 font-medium">
                                 <li className="mb-4">
                                     <a
-                                        href="https://instagram.com/"
+                                        href="https://www.instagram.com/x.onecb/"
                                         className="hover:underline font-sans"
                                     >
                                         Instagram
-                                    </a>
-                                </li>
-                                <li className="mb-4">
-                                    <a
-                                        href="https://tiktok.com/"
-                                        className="hover:underline font-sans"
-                                    >
-                                        Tiktok
                                     </a>
                                 </li>
                             </ul>

@@ -127,6 +127,15 @@ function Class() {
             <section className="flex flex-col justify-center items-center">
                 <StudentsSection students={students} />
             </section>
+            <motion.h1
+                variants={onScreenEffect}
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true }}
+                className="text-3xl xl:text-4xl  font-black "
+            >
+                OUR GALLERY
+            </motion.h1>
         </div>
     );
 }

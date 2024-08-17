@@ -1,7 +1,7 @@
 "use client";
 import About from "@/components/About";
 import Class from "@/components/Class";
-import SmoothScroll from "@/components/SmoothScroll";
+import HorizontalScroll from "@/components/HorizontalScroll";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import { useEffect, useState } from "react";
@@ -12,27 +12,25 @@ export default function Home() {
     useEffect(() => {
         const timerLoad = setTimeout(() => {
             setLoading(false);
-        }, 1000);
+        }, 3000);
 
         return () => clearTimeout(timerLoad);
     }, []);
 
     if (loading) {
-        return <div></div>;
+        return (
+            <div className="flex flex-col gap-4 justify-center items-center h-screen">
+                <div className="loader" />
+                <span className="text-center">Loading</span>
+            </div>
+        );
     }
     return (
         <div>
             <Hero />
             <About />
             <Class />
-            {/* <motion.div
-                variants={onScreenEffectFade}
-                initial="offScreen"
-                whileInView="onScreen"
-                viewport={{ once: true }}
-            >
-                <SmoothScroll />
-            </motion.div> */}
+            <HorizontalScroll />
             <Footer />
         </div>
     );

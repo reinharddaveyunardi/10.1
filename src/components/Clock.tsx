@@ -48,7 +48,7 @@ function Clock() {
                             bounce: 0.4,
                         }}
                     >
-                        <h1 className="text-black opacity-75 font-medium text-xs sm:text-sm lg:text-lg xl:text-xl shadow-inner">
+                        <h1 className="text-black opacity-75 font-medium text-xs sm:text-sm lg:text-lg xl:text-xl">
                             {greeting}, welcome to 10.1 website!
                         </h1>
                         <h1 className="text-black opacity-65 text-xs font-medium">
